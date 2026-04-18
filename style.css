@@ -1,0 +1,272 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a472a, #0a2a1a);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    background: rgba(10, 30, 20, 0.9);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    max-width: 1200px;
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+    color: #ffd700;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+h2, h3 {
+    color: #e0e0e0;
+    margin-bottom: 15px;
+}
+
+.screen {
+    display: none;
+}
+
+.screen.active {
+    display: block;
+}
+
+/* Lobby */
+.lobby-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+}
+
+.btn {
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.btn.primary {
+    background: #ffd700;
+    color: #1a472a;
+}
+
+.btn.primary:hover {
+    background: #ffed4a;
+    transform: scale(1.05);
+}
+
+.btn.secondary {
+    background: #2e7d64;
+    color: white;
+}
+
+.btn.secondary:hover {
+    background: #3a9b7d;
+}
+
+.btn.success {
+    background: #27ae60;
+    color: white;
+}
+
+.btn.success:hover:not(:disabled) {
+    background: #2ecc71;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn.small {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+}
+
+.join-section {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.input {
+    padding: 12px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 50px;
+    background: white;
+    text-align: center;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+/* Tableros */
+.board-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.board {
+    background: #0a2a5a;
+    border: 3px solid #ffd700;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.board-info {
+    margin-top: 10px;
+    color: #aaa;
+    font-size: 0.8rem;
+}
+
+.placement-container {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.ships-panel {
+    background: rgba(0,0,0,0.5);
+    padding: 20px;
+    border-radius: 15px;
+    min-width: 200px;
+}
+
+.ships-list {
+    margin-bottom: 20px;
+}
+
+.ship-item {
+    background: #2c3e50;
+    padding: 8px 12px;
+    margin: 5px 0;
+    border-radius: 8px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ship-item.placed {
+    opacity: 0.5;
+    text-decoration: line-through;
+}
+
+.ship-length {
+    background: #ffd700;
+    color: #1a472a;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* Juego */
+.game-container {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.game-board {
+    text-align: center;
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.turn-indicator {
+    background: #ffd700;
+    color: #1a472a;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.turn-indicator.my-turn {
+    background: #27ae60;
+    color: white;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.message {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+}
+
+.message.error {
+    background: #e74c3c;
+}
+
+.message.success {
+    background: #27ae60;
+}
+
+.message.info {
+    background: #3498db;
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
+    .board {
+        width: 350px;
+        height: 350px;
+    }
+    
+    .game-container {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 800px) {
+    .board {
+        width: 280px;
+        height: 280px;
+    }
+    
+    .placement-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Batalla Naval Multiplayer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>⚓ BATALLA NAVAL ⚓</h1>
+        
+        <!-- Pantalla de inicio / unirse -->
+        <div id="lobbyScreen" class="screen active">
+            <div class="lobby-buttons">
+                <button id="createRoomBtn" class="btn primary">🎮 Crear Sala</button>
+                <div class="join-section">
+                    <input type="text" id="joinCodeInput" placeholder="Código de sala (4 letras)" maxlength="4" class="input">
+                    <button id="joinRoomBtn" class="btn secondary">🔗 Unirse a Sala</button>
+                </div>
+            </div>
+            <div id="lobbyMessage" class="message"></div>
+        </div>
+        
+        <!-- Pantalla de colocación de barcos -->
+        <div id="placementScreen" class="screen">
+            <h2>📌 Coloca tus barcos</h2>
+            <div class="placement-container">
+                <div class="ships-panel">
+                    <h3>Tus barcos:</h3>
+                    <div id="shipsList" class="ships-list"></div>
+                    <button id="readyBtn" class="btn success" disabled>✅ Listo para jugar</button>
+                </div>
+                <div class="board-container">
+                    <canvas id="placementBoard" width="500" height="500" class="board"></canvas>
+                    <div class="board-info">Haz clic para colocar | Haz clic derecho para rotar</div>
+                </div>
+            </div>
+            <div id="placementMessage" class="message"></div>
+        </div>
+        
+        <!-- Pantalla de juego -->
+        <div id="gameScreen" class="screen">
+            <div class="game-header">
+                <div id="turnIndicator" class="turn-indicator">Esperando turno...</div>
+                <button id="rematchBtn" class="btn small">🔄 Revancha</button>
+            </div>
+            <div class="game-container">
+                <div class="game-board">
+                    <h3>🌊 Mi Tablero</h3>
+                    <canvas id="myBoard" width="450" height="450" class="board"></canvas>
+                </div>
+                <div class="game-board">
+                    <h3>🎯 Tablero Enemigo</h3>
+                    <canvas id="enemyBoard" width="450" height="450" class="board"></canvas>
+                </div>
+            </div>
+            <div id="gameMessage" class="message"></div>
+        </div>
+    </div>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="client.js"></script>
+</body>
+</html>
